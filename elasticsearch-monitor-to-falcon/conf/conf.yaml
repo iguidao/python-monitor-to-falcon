@@ -1,0 +1,8 @@
+# falcon config
+falcon:
+    push_url: http://127.0.0.1:1988/v1/push
+
+# Elasticsearch clusters
+es-clusters:
+  - {One_host: "HOST-NAME-01", PORT: "9200", cluster_name: "CLUSTER-NAME-01", Back_host: "HOST-NAME-02"}
+  - {One_host: "HOST-NAME-01", PORT: "9200", cluster_name: "CLUSTER-NAME-02", Back_host: "HOST-NAME-02"}
