@@ -1,22 +1,16 @@
-# ali_monitor_to_falconn
+# 介绍
 
-收集阿里云监控，并上传到falcon
+专门记录python所写的监控工具
 
 ## 系统环境
 
 - running inside Linux
-- python (>= 2.7)
-
-## 阿里云官方SDK
-
-- pip install aliyuncli
-- pip install -Iv aliyun-python-sdk-cms==5.0.0
-- aliyuncli configure
-- pip install aliyun-python-sdk-core
-- pip install aliyun-python-sdk-cms
+- python (>= 2.7) OR ( >= 3.6 )
 
 ## 列表
-1. slb_monitor - 收集阿里云SLB信息上传到falcon
+1. ali_monitor_to_falcon - 收集阿里云服务监控信息上传到falcon
+2. elasticsearch-monitor-to-falcon - 收集elasticsearch集群信息上传到falcon
 
-## 相关文档
-[click me](https://help.aliyun.com/document_detail/28622.html?spm=a2c4g.11186623.6.685.2bb83da6imuTkb)
+## 联系方式
+
+mail：xiaohui920@sina.cn
