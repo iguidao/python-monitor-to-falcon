@@ -47,6 +47,9 @@ host:
 ## 相关文档
 [click me](https://help.aliyun.com/document_detail/28622.html?spm=a2c4g.11186623.6.685.2bb83da6imuTkb)
 
+## 注意
+每个指标一次请求，阿里云对api请求有限制，过多需要话费人民币，切记~切记~切记~
+
 ## Related Metrics
 ### 四层监控指标
 Metrics | Comments
