@@ -13,6 +13,7 @@
 3. etcd-monitor-to-falcon - 收集etcd 节点信息上传到falcon
 4. zookeeper-monitor-to-falcon - 收集zookeeper节点信息上传到falcon
 5. jstorm-monitor-to-falcon - 收集jstorm集群信息上传到falcon
+6. hbase-monitor-to-falcon - 收集hbase信息上传到falcon
 
 ## 联系方式
 
