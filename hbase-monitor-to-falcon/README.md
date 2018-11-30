@@ -9,9 +9,34 @@
 - python (>= 2.7)
 - hbase (3.4.x)
 
-## 使用方法
-1. 在本机使用
-2. crontab执行即可
+## 需要模块环境
+
+- pip install requests
+
+
+## 配置文件更改
+
+1. 编辑conf/conf.yaml文件，替换你的falcon地址和hbase机器地址，如意role和cluster的更改
+```
+
+# falcon config
+falcon:
+    push_url: http://127.0.0.1:1988/v1/push
+
+# hbase config
+hbase-config:
+  - {host: "192.168.1.1", port: "60010", role: "master", cluster: "CLUSTER_NAME"}
+  - {host: "192.168.1.2", port: "60030", role: "regionserver", cluster: "CLUSTER_NAME"}
+  - {host: "192.168.1.3", port: "60030", role: "regionserver", cluster: "CLUSTER_NAME"}
+  - {host: "192.168.1.4", port: "60030", role: "regionserver", cluster: "CLUSTER_NAME"}
+
+```
+2. 启动方式
+>\# crontab -e
+  ```
+* * * * * python hbase-monitor.py -c hbase_metric.py 
+
+  ```
 
 ## 相关文档
 [click me](http://abloz.com/hbase/book.html#ops.monitoring)
@@ -20,7 +45,6 @@
 
 Metrics | Comments
 --- | ---
-
 numRegionServers | regionserver数        
 numDeadRegionServers |         
 clusterRequests |         
