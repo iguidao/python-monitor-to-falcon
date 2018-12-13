@@ -1,3 +1,6 @@
+ali_access_key: 'your_access_key'
+ali_access_secret: 'your_access_secret'
+ali_region_id: 'your_region_id'
 falcon:
     push_url: http://127.0.0.1:1988/v1/push
 project: 'acs_slb_dashboard'
