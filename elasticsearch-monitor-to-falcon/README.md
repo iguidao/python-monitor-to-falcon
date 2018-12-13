@@ -7,7 +7,7 @@
 
 - running inside Linux
 - python ( >= 2.7 )
-- elasticsearch ( >= 2.3 )
+- elasticsearch ( >= 2.3 )（目前支持6.x） 
 
 ## 需要模块环境
 
@@ -16,7 +16,7 @@
 
 ## 配置文件更改
 
-1. 编辑conf/conf.yaml文件，替换你的falcon地址和elasticsearch集群地址，模板为两个集群
+1. 编辑conf.yaml文件，替换你的falcon地址和elasticsearch集群地址，模板为两个集群
 ```
 
 # falcon config
@@ -30,12 +30,12 @@ es-clusters:
   
 ```
  
-2. 编辑settings.py文件更改自己的监控项
+2. 编辑es_metric.py文件更改自己的监控项
 
 3. 启动方式
 >\# crontab -e
   ```
-* * * * * python es-monitor.py
+* * * * * python es-monitor.py -c conf.yaml
 
   ```
 
