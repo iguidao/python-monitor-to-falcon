@@ -18,14 +18,12 @@
 
 ### 配置文件更改
 
-1. 编辑`al_slb.py` 替换你的阿里云认证信息
->\# vim al_slb.py
-  ```
-  clt = client.AcsClient('your_access_key','your_access_secret','your_region_id')
-  ```
-2. 编辑`conf.yaml` 更改你的falcon地址和slb信息
+1. 编辑`conf.yaml` 更改你的falcon地址和slb信息和阿里云认证信息
 >\# vim conf.yaml
   ```
+ali_access_key: 'your_access_key'
+ali_access_secret: 'your_access_secret'
+ali_region_id: 'your_region_id'
 falcon:
     push_url: http://127.0.0.1:1988/v1/push
 project: 'acs_slb_dashboard'
@@ -35,12 +33,12 @@ host:
 
   ```
 
-3. 选择metric，可以默认配置，在配置文件metric_all.yaml文件中
+2. 选择metric，可以默认配置（默认为4层协议监控，注释掉的是7层协议监控），在配置文件metric_all.yaml文件中
 
-4. 启动方式
+3. 启动方式
 >\# crontab -e
   ```
-* * * * * python al_slb.py
+* * * * * python al_slb.py -f metric_all.yaml -c conf.yaml
 
   ```
 
