@@ -1,20 +1,6 @@
 #!/usr/bin/env python
 # encoding: utf-8
 
-"""
-Author: Ligh
-Mail: xiaohui920@sina.cn
-File: __init__.py
-Created Time: 11/13/18 16:41
-"""
-
-from os import path
-
-BASE_DIR = path.dirname(path.abspath(__file__))
-CONFIG_FILE = BASE_DIR + '/conf.yaml'
-
-
-# keys for health page
 traps1 = [
     "status",
     "active_primary_shards",
@@ -131,10 +117,6 @@ traps2 = [
     "transport.rx_count",
     "transport.tx_size_in_bytes",
     "transport.tx_count"
-]
-
-traps3 = [
-    "indices.count",
 ]
 
 GAUGE = [
@@ -256,21 +238,6 @@ COUNTER = [
     "transport.tx_size_in_bytes",
     "transport.tx_count"
 ]
-
-SEC_METRIC = {
-    "indices.search.query_time_in_millis": "indices.search.query_total",
-    "indices.search.fetch_time_in_millis": "indices.search.fetch_total",
-    "indices.get.exists_time_in_millis": "indices.get.exists_total",
-    "indices.get.missing_time_in_millis": "indices.get.missing_total",
-    "indices.merges.total_size_in_bytes": "indices.merges.total_time_in_millis",
-    "indices.flush.total_time_in_millis": "indices.flush.total",
-    "indices.refresh.total_time_in_millis": "indices.refresh.total",
-    "indices.indexing.index_time_in_millis": "indices.indexing.index_total",
-    "indices.indexing.delete_time_in_millis": "indices.indexing.delete_total",
-    "indices.warmer.total_time_in_millis": "indices.warmer.total",
-    "jvm.gc.collectors.young.collection_time_in_millis": "jvm.gc.collectors.young.collection_count",
-    "jvm.gc.collectors.old.collection_time_in_millis": "jvm.gc.collectors.old.collection_count",
-}
 
 if __name__ == '__main__':
     pass
