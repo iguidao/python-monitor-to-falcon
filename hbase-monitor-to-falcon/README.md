@@ -200,7 +200,6 @@ ThreadsRunnable | Current number of RUNNABLE threads
 ThreadsTerminated | Current number of TERMINATED threads    
 ThreadsTimedWaiting | Current number of TIMED_WAITING threads    
 ThreadsWaiting | Current number of WAITING threads    
- |         
 authenticationFailures | Number of client connection authentication failures   
 authenticationSuccesses | Number of client connections where authentication succeeded  
 authorizationFailures |         
