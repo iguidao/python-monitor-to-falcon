@@ -1,0 +1,8 @@
+falcon:
+    push_url: "http://127.0.0.1:1988/v1/push"
+
+# zookeeper config
+zk-config:
+   - {host: "test-zk-01", port: "2181"}
+   - {host: "test-zk-02", port: "2181"}
+   - {host: "test-zk-03", port: "2181"}

@@ -3,12 +3,19 @@
  
 import socket
 import time
+import sys
+import yaml
+import requests
+import json
 from StringIO import StringIO
+from optparse import OptionParser
+
  
 ############# get zookeeper server status
+#class ZooKeeperServer(host_name, host_port):
 class ZooKeeperServer(object):
  
-    def __init__(self, host='localhost', port='2181', timeout=1):
+    def __init__(self, host, port, timeout=1):
         self._address = (host, int(port))
         self._timeout = timeout
         self._result  = {}
@@ -83,7 +90,7 @@ class ZooKeeperServer(object):
         return key, value
  
 
-def zk_data(endpoint, metric, ts, value, tags_name):
+def zk_data(endpoint, metric, ts, value):
     structure = {
         'endpoint': endpoint,
         'metric': metric,
@@ -91,7 +98,7 @@ def zk_data(endpoint, metric, ts, value, tags_name):
         'step': 60,
         'value': value,
         'counterType': 'GAUGE',
-        'tags': tags_name
+        'tags': ""
     }
     return structure
 
@@ -100,17 +107,47 @@ def send_to_falcon(url=None, data=None):
         res = requests.post(url, data=json.dumps(data))
         return res
 
-zk = ZooKeeperServer()
-zk_status = zk.get_stats()
-endpoint=socket.gethostname()
-tags_name="app=zookeeper"
-falcon_data = []
-ts = int(time.time())
-falcon_url="http://127.0.0.1:1988/v1/push"
-for key in zk_status:
-    data = zk_data(endpoint, key, ts, zk_status[key], tags_name)
-    falcon_data.append(data)
-try:
-    send_to_falcon(falcon_url, falcon_data)
-except Exception as e:
-    print "send faile"
+def load_yaml_data(filename=None):
+    try:
+        with open(filename, 'r') as f:
+            data = yaml.load(f)
+            return data
+    except IOError:
+        sys.exit()
+
+def main(host_name, host_port):
+    try:
+        zk = ZooKeeperServer(host_name, host_port)
+        zk_status = zk.get_stats()
+    except Exception as e:
+        print "zookeeper连接不上: %s" % e
+        sys.exit(0)
+    #endpoint=host_name
+   # tags_name="app=zookeeper"
+    ts = int(time.time())
+    for key in zk_status:
+        data = zk_data(host_name, key, ts, zk_status[key])
+        falcon_data.append(data)
+
+if __name__ == '__main__':
+    parser = OptionParser()
+    parser.add_option("-c","--config",dest="config_file")
+    (options,args) = parser.parse_args()
+    if not options.config_file:
+        parser.print_help()
+        sys.exit(1)
+    CONFIG_FILE = options.config_file
+    config_data = load_yaml_data(CONFIG_FILE)
+    host_info = config_data['zk-config']
+    falcon_url = config_data['falcon']['push_url']
+    falcon_data = []
+    for  host in host_info:
+        host_name = host['host']
+        host_port = host['port']
+        main(host_name, host_port)
+    #print falcon_data
+    #send_to_falcon(falcon_url,falcon_data)
+    try:
+        send_to_falcon(falcon_url, falcon_data)
+    except Exception as e:
+        print "send faile"
