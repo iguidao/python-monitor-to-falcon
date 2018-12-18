@@ -89,15 +89,19 @@ class ZooKeeperServer(object):
             pass
         return key, value
  
+COUNTER =[
+'zk_packets_received',
+'zk_packets_sent'
+]
 
-def zk_data(endpoint, metric, ts, value):
+def zk_data(endpoint, metric, ts, value, counter_type):
     structure = {
         'endpoint': endpoint,
         'metric': metric,
         'timestamp': ts,
         'step': 60,
         'value': value,
-        'counterType': 'GAUGE',
+        'counterType': counter_type,
         'tags': ""
     }
     return structure
@@ -126,8 +130,10 @@ def main(host_name, host_port):
    # tags_name="app=zookeeper"
     ts = int(time.time())
     for key in zk_status:
-        data = zk_data(host_name, key, ts, zk_status[key])
-        falcon_data.append(data)
+        if key in COUNTER:
+            falcon_data.append(zk_data(host_name, key, ts, zk_status[key], "COUNTER"))
+        else:
+            falcon_data.append(zk_data(host_name, key, ts, zk_status[key], "GAUGE"))
 
 if __name__ == '__main__':
     parser = OptionParser()
