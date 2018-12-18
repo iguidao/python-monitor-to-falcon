@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+#etcd_leader_latency = [
 etcd_stats_all = [
     'state',
     'recvAppendRequestCnt', 
@@ -9,22 +10,22 @@ etcd_stats_all = [
     'sendAppendRequestCnt', 
     'sendPkgRate', 
     'sendBandwidthRate',
-    "getsSuccess", 
-    "getsFail" , 
-    "setsSuccess", 
-    "setsFail", 
-    "deleteSuccess", 
-    "deleteFail", 
-    "updateSuccess", 
-    "updateFail", 
-    "createSuccess", 
-    "createFail", 
-    "compareAndSwapSuccess", 
-    "compareAndSwapFail", 
-    "compareAndDeleteSuccess", 
-    "compareAndDeleteFail", 
-    "expireCount", 
-    "watchers"
+    'getsSuccess', 
+    'getsFail', 
+    'setsSuccess', 
+    'setsFail', 
+    'deleteSuccess', 
+    'deleteFail', 
+    'updateSuccess', 
+    'updateFail', 
+    'createSuccess', 
+    'createFail', 
+    'compareAndSwapSuccess', 
+    'compareAndSwapFail', 
+    'compareAndDeleteSuccess', 
+    'compareAndDeleteFail', 
+    'expireCount', 
+    'watchers'
 ]
 
 etcd_metrics = [
@@ -54,6 +55,20 @@ etcd_metrics = [
     'process_resident_memory_bytes',
     'process_start_time_seconds',
     'process_virtual_memory_bytes'
+]
+
+COUNTER = [
+    'getsSuccess',
+    'getsFail',
+    'setsSuccess',
+    'setsFail',
+    'deleteSuccess',
+    'deleteFail',
+    'updateSuccess',
+    'updateFail',
+    'createSuccess',
+    'createFail'
+
 ]
 
 if __name__ == '__main__':

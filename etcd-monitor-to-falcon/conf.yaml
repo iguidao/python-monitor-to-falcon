@@ -1,0 +1,8 @@
+falcon:
+    push_url: "http://127.0.0.1:1988/v1/push"
+
+# etcd config
+etcd-config:
+   - {host: "test-etcd-01", port: "2379"}
+   - {host: "test-etcd-02", port: "2379"}
+   - {host: "test-etcd-03", port: "2379"}
