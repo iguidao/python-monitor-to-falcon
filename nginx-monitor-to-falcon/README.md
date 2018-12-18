@@ -13,7 +13,10 @@
 ## 使用方法
 1. 在本机使用
 2. crontab执行即可
+  ```
+* * * * * python nginx-monitor.py -c conf.yaml
 
+  ```
 ## 相关文档
 [click me](http://nginx.org/en/docs/http/ngx_http_stub_status_module.html)
 

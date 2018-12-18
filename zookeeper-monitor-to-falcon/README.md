@@ -13,7 +13,10 @@
 ## 使用方法
 1. 在本机使用
 2. crontab执行即可
+  ```
+* * * * * python zk-monitor.py -c conf.yaml
 
+  ```
 ## 相关文档
 [click me](https://blog.csdn.net/reblue520/article/details/52352689)
 

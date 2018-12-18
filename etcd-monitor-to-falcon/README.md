@@ -12,8 +12,11 @@
 
 ## 使用方法
 1. 在本机使用
-2. crontab执行即可(python etcd-monitor.py -c conf.yaml)
+2. crontab执行即可
+  ```
+* * * * * python etcd-monitor.py -c conf.yaml
 
+  ```
 ## 相关文档
 [click me](https://coreos.com/etcd/docs/latest/v2/api.html)
 
