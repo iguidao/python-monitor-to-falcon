@@ -1,0 +1,7 @@
+falcon:
+    push_url: "http://127.0.0.1:1988/v1/push"
+
+#nginx config
+nginx-config:
+   - {host: "test-nginx-01", port: "9000", url: "nginx_status"}
+   - {host: "test-nginx-02", port: "9000", url: "nginx_status"}
