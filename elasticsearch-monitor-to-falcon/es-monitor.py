@@ -107,13 +107,12 @@ def main(CONFIG_FILE):
         try:
             if check_result(ONE_HOST,PORT) == 200 :
                 HOSTNAME=ONE_HOST
-            elif check_result(BACK_HOST,PORT) == 200 :
-                HOSTNAME=BACK_HOST
-            else:
-                print "this %s and %s not fount!!!` \n", (ONE_HOST, BACK_HOST)
-                continue
         except:
-            continue
+            try:
+                if check_result(BACK_HOST,PORT) == 200 :
+                    HOSTNAME=BACK_HOST
+            except:
+                continue
             
         IP = socket.gethostbyname(HOSTNAME)
         cluster_name = i['cluster_name'] 
