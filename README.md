@@ -14,6 +14,7 @@
 4. zookeeper-monitor-to-falcon - 收集zookeeper节点信息上传到falcon
 5. jstorm-monitor-to-falcon - 收集jstorm集群信息上传到falcon
 6. hbase-monitor-to-falcon - 收集hbase信息上传到falcon
+7.codis-monitor-to-falcon - 收集codis信息上传到falcon【目前只支持收集proxy】
 
 ## 联系方式
 
